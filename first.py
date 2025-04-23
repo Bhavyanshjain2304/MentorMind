@@ -217,9 +217,7 @@ Hi {student_data.get('name', 'Student')},
 Warm greetings from MentorMind! This is Yosker, your personalized AI career guidance assistant.
 
 Your aspiration is inspiring! Based on your profile, here's a recommended path:
-
 {profile}
-
 Please explore the suggested path and feel free to reach out if you'd like to connect with experts in this field.
 
 Best wishes,  
