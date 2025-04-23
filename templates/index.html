@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Career Consulting AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: url('https://img.freepik.com/premium-photo/school-classroom-blur-background-without-young-student-blurry-view-elementary-generative-ai_874904-45460.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      backdrop-filter: blur(4px);
+      min-height: 100vh;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.85);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+
+    .navbar h1 {
+      margin: 0;
+      color: #4fc3f7;
+      font-size: 1.6rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+    }
+
+    .nav-links button,
+    .nav-links .logout {
+      background: #4fc3f7;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .nav-links button:hover,
+    .nav-links .logout:hover {
+      background: #03a9f4;
+      transform: scale(1.05);
+    }
+
+    .nav-links .logout {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .nav-links .logout:hover {
+      background-color: #e53935;
+    }
+
+    /* Career Form Container */
+    .container {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 30px;
+      margin: 60px auto;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 850px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+
+    .container h1, .container h3 {
+      text-align: center;
+      color: #4fc3f7;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #fff;
+    }
+
+    input[type="text"], input[type="number"], select {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      background-color: #1f1f1f;
+      color: #fff;
+    }
+
+    button[type="submit"] {
+      padding: 12px 20px;
+      background-color: #4caf50;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #43a047;
+      transform: scale(1.05);
+    }
+
+    .response-box {
+      margin-top: 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .reset-link {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .reset-link a {
+      color: #f44336;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .reset-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      form {
+        flex-direction: column;
+      }
+
+      button[type="submit"] {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <h1>Career Consulting AI</h1>
+    <div class="nav-links">
+      <a href="{{ url_for('talk') }}">
+        <button>Chat</button>
+      </a>
+      <a href="{{ url_for('about') }}">
+        <button>About Us</button>
+      </a>
+      <a href="{{ url_for('logout') }}" class="logout">Logout</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Career Consulting AI</h1>
+    <h3>Please fill the form correctly to get accurate recommendations.</h3>
+    <form id="careerForm">
+      <label>Full Name: <input type="text" id="Name" name="Name" required></label>
+      <label>Hobbies & Interests: <input type="text" id="hobbies" name="hobbies" required></label>
+      <label>Part-Time Job:
+        <select id="part_time_job" name="part_time_job" required>
+          <option value="">Select</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </label>
+      <label>Absence Days: <input type="number" id="absence_days" name="absence_days" required></label>
+      <label>Extracurricular Activities: <input type="text" id="extracurricular_activities" name="extracurricular_activities" required></label>
+      <label>Weekly Self-Study Hours: <input type="number" id="weekly_self_study_hours" name="weekly_self_study_hours" required></label>
+      <label>Career Aspiration: <input type="text" id="career_aspiration" name="career_aspiration" required></label>
+      <label>Who suggested this Carrer: <input type="text" id="Suggestion" name="Suggestion" required></label>
+      <label>Math Score: <input type="number" id="math_score" name="math_score" required></label>
+      <label>History Score: <input type="number" id="history_score" name="history_score" required></label>
+      <label>Physics Score: <input type="number" id="physics_score" name="physics_score" required></label>
+      <label>Chemistry Score: <input type="number" id="chemistry_score" name="chemistry_score" required></label>
+      <label>Biology Score: <input type="number" id="biology_score" name="biology_score" required></label>
+      <label>English Score: <input type="number" id="english_score" name="english_score" required></label>
+      <label>Economics Score: <input type="number" id="economics_score" name="economics_score" required></label>
+      <label>Geography Score: <input type="number" id="geography_score" name="geography_score" required></label>
+      <label>Computer Science Score: <input type="number" id="cs_score" name="cs_score" required></label>
+      <label>Analytical Thinking Score: <input type="number" id="analytical_thinking_score" name="analytical_thinking_score" required></label>
+      <label>Logical Reasoning Score: <input type="number" id="logical_reasoning_score" name="logical_reasoning_score" required></label>
+      <label>Psychology Score: <input type="number" id="psychology_score" name="psychology_score" required></label>
+      <label>Preferred Learning Method:
+        <select id="preferred_learning_method" name="preferred_learning_method" required>
+          <option value="">Select</option>
+          <option value="Auditory">Auditory</option>
+          <option value="Kinesthetic">Kinesthetic</option>
+          <option value="Reading/Writing">Reading/Writing</option>
+          <option value="Visual">Visual</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="container" id="emailContainer">
+    <h2>Get Career Suggestions via Email</h2>
+    <label for="Email_ID">Enter your Email ID:</label>
+    <input type="email" id="Email_ID" placeholder="you@example.com" required />
+    <button id="sendEmailBtn">Send AI-Powered Email</button>
+    <p id="email_status"></p>
+  </div>
+  
+
+ 
+
+  <div class="container response-box">
+    <h2>AI Response</h2>
+    <div id="ai_response">Please click to Talk With Ai to get Started with counseling.</div>
+    <a href="{{ url_for('talk') }}">
+      <button>Talk With Ai</button>
+    </a>
+  </div>
+
+  <script>
+  let emailCooldown = false;
+
+  document.getElementById("sendEmailBtn").addEventListener("click", function () {
+    const email = document.getElementById("Email_ID").value;
+
+    if (emailCooldown) {
+      alert("Please wait 5 seconds before sending another email.");
+      return;
+    }
+
+    if (!email) {
+      alert("Please enter your Email ID before sending the email.");
+      return;
+    }
+
+    // Start cooldown
+    emailCooldown = true;
+    document.getElementById("sendEmailBtn").disabled = true;
+
+    fetch("/send_email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email: email })
+    })
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("email_status").innerText = data.message || "Email sent!";
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      document.getElementById("email_status").innerText = "Failed to send email.";
+    })
+    .finally(() => {
+      // Cooldown reset after 5 seconds
+      setTimeout(() => {
+        emailCooldown = false;
+        document.getElementById("sendEmailBtn").disabled = false;
+      }, 5000);
+    });
+  });
+  </script>
+
+    
+  <script>
+    document.getElementById("careerForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        let formData = new FormData(this); // Collect form data using FormData
+
+        fetch("/save_data", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message); // Display success message
+            } else if (data.error) {
+                alert("Error: " + data.error); // Display error if occurs
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    });
+  </script>
+</body>
+</html>
