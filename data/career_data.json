@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "Name": "Bhavyansh Jain",
     "hobbies": "Cooking, Listening Music, Travelling",
@@ -20,4 +21,28 @@
     "logical_reasoning_score": "75",
     "psychology_score": "92",
     "preferred_learning_method": "Visual"
+=======
+{
+    "Name": "Bhavyansh Jain",
+    "hobbies": "Cooking, Listening Music, Travelling",
+    "part_time_job": "No",
+    "absence_days": "4",
+    "extracurricular_activities": "Volunteer Work",
+    "weekly_self_study_hours": "28",
+    "career_aspiration": "Data Scientist",
+    "Suggestion": "Myself",
+    "math_score": "95",
+    "history_score": "91",
+    "physics_score": "67",
+    "chemistry_score": "80",
+    "biology_score": "0",
+    "english_score": "89",
+    "economics_score": "0",
+    "geography_score": "91",
+    "cs_score": "95",
+    "analytical_thinking_score": "68",
+    "logical_reasoning_score": "75",
+    "psychology_score": "92",
+    "preferred_learning_method": "Visual"
+>>>>>>> 6319e109314445c34931d0faf8ec7371ca6e9a74
 }

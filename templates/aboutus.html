@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -196,3 +197,203 @@
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - MentorMind</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('https://img.freepik.com/premium-photo/school-classroom-blur-background-without-young-student-blurry-view-elementary-generative-ai_874904-45460.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            backdrop-filter: blur(4px);
+            min-height: 100vh;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+        }
+
+        .navbar h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: #4fc3f7;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+        }
+
+        .nav-links button {
+            background: #4fc3f7;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .nav-links button:hover {
+            background: #03a9f4;
+            transform: scale(1.05);
+        }
+
+        /* Main Content Styles */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.75);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        h1, h2, h3 {
+            color: #4fc3f7;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .team-section {
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #2c3e50;
+            border-left: 5px solid #4fc3f7;
+            border-radius: 8px;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+        }
+
+        .contact-info a {
+            color: #4fc3f7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #21618c;
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            margin-top: 50px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                margin-top: 0.5rem;
+                width: 100%;
+            }
+
+            .container {
+                margin: 20px;
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h2>MentorMind</h2>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">
+                <button>Home</button>
+            </a>
+            <a href="{{ url_for('talk') }}">
+                <button>chat</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>About Us</h1>
+        <p><strong>MentorMind</strong> is an AI-powered career counseling platform designed to help students after 10th grade choose their ideal career path in fields like Medical, Technical, Arts, and Commerce. We combine the power of artificial intelligence with expert insights to guide young minds toward a future filled with purpose and clarity.</p>
+
+        <h2>Our Vision</h2>
+        <p>To simplify and personalize the career discovery process using AI. We believe that every student has unique potential, and our goal is to help uncover it through smart recommendations and thoughtful career mapping.</p>
+
+        <h2>Meet the Founder</h2>
+        <div class="team-section">
+            <div class="team-member">
+                <h3>Bhavyansh Jain</h3>
+                <p>Founder of MentorMind — A tech enthusiast with a passion for AI, education, and innovation. Dedicated to making career guidance more accessible and data-driven for students across India.</p>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p>Email: <a href="mailto:bhavyanshjain432@gmail.com">bhavyanshjain432@gmail.com</a></p>
+            <p>Phone: <a href="tel:+91 7976937195">+91 79769 37195</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/bhavyansh-jain-9208a1252/" target="_blank">Bhavyansh's LinkedIn</a></p>
+            <p>GitHub: <a href="https://github.com/Bhavyanshjain2304" target="_blank">Bhavyansh Jain</a></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 MentorMind. All rights reserved.</p>
+    </div>
+
+</body>
+</html>
+>>>>>>> 6319e109314445c34931d0faf8ec7371ca6e9a74
