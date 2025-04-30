@@ -8,13 +8,21 @@ def client():
         yield client
 
 def test_login_page(client):
+    """Test if login page loads successfully"""
     response = client.get('/')
     assert response.status_code == 200
 
 def test_signup_page(client):
+    """Test if signup page loads successfully"""
     response = client.get('/signup')
     assert response.status_code == 200
 
 def test_about_page(client):
+    """Test if about page loads successfully"""
     response = client.get('/about')
-    assert response.status_code == 200 
+    assert response.status_code == 200
+
+def test_invalid_route(client):
+    """Test if 404 page is returned for invalid routes"""
+    response = client.get('/invalid-route')
+    assert response.status_code == 404 
