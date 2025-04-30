@@ -27,7 +27,7 @@ jobs:
         
     - name: Run tests
       run: |
-        pytest tests/
+        PYTHONPATH=$PYTHONPATH:$(pwd) pytest tests/
 
   build-and-deploy:
     needs: test
