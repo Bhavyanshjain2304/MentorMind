@@ -2,6 +2,25 @@ pipeline {
     agent any
     
     stages {
+        stage('Checkout') {
+            steps {
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/Bhavyanshjain2304/MentorMind.git',
+                        credentialsId: ''
+                    ]],
+                    extensions: [[
+                        $class: 'CloneOption',
+                        depth: 1,
+                        noTags: true,
+                        shallow: true
+                    ]]
+                ])
+            }
+        }
+        
         stage('Build') {
             steps {
                 bat '''
