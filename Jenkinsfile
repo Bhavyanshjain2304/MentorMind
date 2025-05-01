@@ -1,68 +1,81 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'jenkins/jenkins:lts'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
     
     environment {
-        DOCKER_COMPOSE_VERSION = '1.29.2'
+        DOCKER_USERNAME = credentials('docker-username')
+        DOCKER_PASSWORD = credentials('docker-password')
     }
     
     stages {
-        stage('Clone Repository') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/Bhavyanshjain2304/MentorMind.git'
+                checkout scm
             }
         }
         
-        stage('Install Docker Compose') {
+        stage('Setup Environment') {
             steps {
-                script {
-                    // Install Docker Compose if not already installed
-                    sh 'curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
-                    sh 'chmod +x /usr/local/bin/docker-compose'
-                }
+                bat '''
+                    @echo off
+                    REM Install Python and pip
+                    powershell -Command "& {Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))}"
+                    choco install python3 -y
+                    choco install docker-desktop -y
+                    
+                    REM Install Python dependencies
+                    python -m pip install --upgrade pip
+                    python -m pip install -r requirements.txt
+                    python -m pip install pytest pytest-cov
+                '''
             }
         }
         
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    // Build Docker image using docker-compose
-                    sh 'docker-compose -f docker-compose.yml build'
-                }
-            }
-        }
-
-        stage('Run Docker Container') {
-            steps {
-                script {
-                    // Run the app using docker-compose
-                    sh 'docker-compose -f docker-compose.yml up -d'
-                }
-            }
-        }
-
         stage('Test') {
             steps {
-                script {
-                    // Add test steps here if needed
-                    echo 'Running tests (if any)...'
-                }
+                bat '''
+                    @echo off
+                    set PYTHONPATH=%PYTHONPATH%;%CD%
+                    python -m pytest tests/
+                '''
             }
         }
-
+        
+        stage('Build Docker Images') {
+            steps {
+                bat '''
+                    @echo off
+                    docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%
+                    docker build -t %DOCKER_USERNAME%/mentormind:latest .
+                    docker push %DOCKER_USERNAME%/mentormind:latest
+                '''
+            }
+        }
+        
         stage('Deploy') {
             steps {
-                script {
-                    // Deploy the container
-                    echo 'Deploying application...'
-                }
+                bat '''
+                    @echo off
+                    docker-compose down
+                    docker-compose up -d --build
+                '''
             }
         }
     }
-
+    
     post {
         always {
-            // Clean up and stop containers after build
-            sh 'docker-compose -f docker-compose.yml down'
+            cleanWs()
+        }
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
         }
     }
 }
