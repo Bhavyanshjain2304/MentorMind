@@ -22,7 +22,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t yosker-ai-app .'
+                bat 'docker build -t mentor-mind .'
             }
         }
 

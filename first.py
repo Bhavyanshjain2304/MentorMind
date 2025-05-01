@@ -151,7 +151,7 @@ def initialize_yosker_chat():
         profile = "No student data available."
  
     initial_prompt = f"""
-You are Yosker, a friendly and knowledgeable AI career counselor.
+You are Duck, a friendly and knowledgeable AI career counselor.
  
 Start by analyzing the following student profile and predict the most suitable stream:
  {profile}
@@ -213,14 +213,14 @@ def generate_email_content(student_data):
      prompt = f"""
  Hi {student_data.get('name', 'Student')},
  
- Warm greetings from MentorMind! This is Yosker, your personalized AI career guidance assistant.
+ Warm greetings from MentorMind! This is Duck, your personalized AI career guidance assistant.
  
  Your aspiration is inspiring! Based on your profile, here's a recommended path:
  {profile}
  Please explore the suggested path and feel free to reach out if you'd like to connect with experts in this field.
  
  Best wishes,  
- Yosker  
+ Duck  
  MentorMind | AI Career Assistant
  """
      try:
