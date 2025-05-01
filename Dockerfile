@@ -1,17 +1,21 @@
-# Use Python image
-FROM python:3.13-slim
+# Use official Python image
+FROM python:3.10-slim
 
 # Set working directory
 WORKDIR /app
 
-# Install dependencies with specific versions to avoid conflicts
-
-
-
-# Copy project files
-COPY . .
-
+# Copy requirements first and install
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Run the app
-CMD ["python", "first.py"]
+# Copy source code
+COPY . .
+
+# Set environment variables (optional fallback)
+ENV PORT=9090
+
+# Expose the port
+EXPOSE 9090
+
+# Run the Flask app
+CMD ["python", "app.py"]

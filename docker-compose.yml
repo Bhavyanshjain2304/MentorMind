@@ -1,13 +1,10 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  app:
+  web:
     build: .
-    container_name: mentor_mind_app
     ports:
-      - "5000:5000"
-    volumes:
-      - .:/app
-    restart: always
+      - "9090:9090"
     env_file:
       - .env
+    restart: always
