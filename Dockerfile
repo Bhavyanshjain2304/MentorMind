@@ -18,4 +18,4 @@ ENV PORT=9090
 EXPOSE 9090
 
 # Run the Flask app
-CMD ["python", "app.py"]
+CMD ["python", "first.py"]
