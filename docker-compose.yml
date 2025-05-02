@@ -4,7 +4,7 @@ services:
   web:
     build: .
     ports:
-      - "9090:9090"
+      - "9082:9082"
     env_file:
       - .env
     restart: always
