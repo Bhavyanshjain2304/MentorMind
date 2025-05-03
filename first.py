@@ -151,7 +151,7 @@ def initialize_yosker_chat():
         profile = "No student data available."
  
     initial_prompt = f"""
-You are Duck, a friendly and knowledgeable AI career counselor.
+You are MentorMind, a friendly and knowledgeable AI career counselor.
  
 Start by analyzing the following student profile and predict the most suitable stream:
  {profile}
