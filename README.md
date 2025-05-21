@@ -62,54 +62,12 @@ MentorMind/
 
 ---
 
-## 🧪 How to Run Locally
-
-1. **Clone the Repository**
-
-   ```bash
-   git clone https://github.com/YourUsername/MentorMind.git
-   cd MentorMind
-Follow these steps to set up and run the application on your local machine:
-
-1. Clone the Repository
-
-git clone https://github.com/YourUsername/MentorMind.git
-cd MentorMind
-
-2. Create a Virtual Environment
-
-python -m venv venv
-venv\Scripts\activate
-
-3. Install Dependencies
-
-pip install -r requirements.txt
-
-4. Run the Application
-
-python app.py
-
-5. Access in Your Browser
-   
-Open your browser and visit:
-http://127.0.0.1:5000/
-
-
-🎯 Use Cases
-College students exploring career paths
-
-Job seekers looking for skill-based guidance
-
-Career counselors needing an AI co-pilot
-
-Educational platforms integrating smart recommendation systems
-
-🌱 Future Improvements
+## 🌱 Future Improvements
  User account system with session history
 
  Admin dashboard for monitoring conversations
 
  AI feedback loop for improving Gemini prompts
 
-🤝 Contributions
+## 🤝 Contributions
 This project is currently maintained by Bhavyansh Jain. Feel free to fork, submit pull requests, or suggest ideas via issues.
