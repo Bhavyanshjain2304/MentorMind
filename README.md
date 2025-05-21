@@ -71,20 +71,17 @@ MentorMind/
    cd MentorMind
 Create Virtual Environment
 
-bash
 Copy
 Edit
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 Install Requirements
 
-bash
 Copy
 Edit
 pip install -r requirements.txt
 Run the Application
 
-bash
 Copy
 Edit
 python app.py
