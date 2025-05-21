@@ -69,24 +69,31 @@ MentorMind/
    ```bash
    git clone https://github.com/YourUsername/MentorMind.git
    cd MentorMind
-Create Virtual Environment
+Follow these steps to set up and run the application on your local machine:
 
-Copy
-Edit
+1. Clone the Repository
+
+git clone https://github.com/YourUsername/MentorMind.git
+cd MentorMind
+
+2. Create a Virtual Environment
+
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install Requirements
+venv\Scripts\activate
 
-Copy
-Edit
+3. Install Dependencies
+
 pip install -r requirements.txt
-Run the Application
 
-Copy
-Edit
+4. Run the Application
+
 python app.py
-Access in Browser
-Visit: http://127.0.0.1:5000/
+
+5. Access in Your Browser
+   
+Open your browser and visit:
+http://127.0.0.1:5000/
+
 
 🎯 Use Cases
 College students exploring career paths
